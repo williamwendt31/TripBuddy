@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Add a Trip</title>
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+        {% load static %}
+        <link rel="stylesheet" type="text/css" href="{% static 'css/style3.css' %}">
+    </head>
+    <body>
+        <nav class="navbar navbar-dark bg-dark">
+            <span class="navbar-brand">Add a Trip!</span>
+            <div id="right">
+                <a href="/travels" class="btn btn-primary">Go Back</a>
+                <a href="/logout" class="btn btn-danger">Logout</a>
+            </div>
+        </nav>
+        <div id="wrapper">
+            <h5>Let's Add a Trip!</h5>
+            {% if messages %}
+            <ul class="messages">
+                {% for message in messages %}
+                <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+                {% endfor %}
+            </ul>
+            {% endif %}
+            <form action="/processadd" method="POST">
+                {% csrf_token %}
+                <div class="form-group">
+                    <label for="dest" class="col-sm-2 col-form-label">Destination</label>
+                    <input type="text" name="dest" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label for="desc" class="col-sm-2 col-form-label">Description</label>
+                    <input type="text" name="desc" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label for="start_date" class="col-sm-2 col-form-label">Start Date</label>
+                    <input type="date" name="start_date" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label for="end_date" class="col-sm-2 col-form-label">End Date</label>
+                    <input type="date" name="end_date" class="form-control">
+                </div>
+                <input type="submit" class="btn btn-success" value="Add Trip">
+            </form>
+        </div>
+    </body>
+</html>

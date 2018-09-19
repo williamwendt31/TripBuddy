@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>View Trip</title>
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+        {% load static %}
+        <link rel="stylesheet" type="text/css" href="{% static 'css/style2.css' %}">
+    </head>
+    <body>
+        <nav class="navbar navbar-dark bg-dark">
+            <span class="navbar-brand">View trip</span>
+            <div id="right">
+                <a href="/travels" class="btn btn-primary">Go Back</a>
+                <a href="/logout" class="btn btn-danger">Logout</a>
+            </div>
+        </nav>
+        <div id="wrapper">
+            <h4><strong>{{ trip.dest }}</strong></h4>
+            <div id="details">
+                <h5>Planned By: {{ trip.planned_by.first_name }} {{ trip.planned_by.last_name }}</h5>
+                <h5>Description: {{ trip.desc }}</h5>
+                <h5>Travel Date From: {{ trip.start_date|date:"M d Y" }}</h5>
+                <h5>Travel Date To: {{ trip.end_date|date:"M d Y" }}</h5>
+            </div>
+            <h4><strong>Other Users Joining the Trip:</strong></h4>
+            <div id="joiners">
+                {% for user in trip.joined_users.all %}
+                <h5>{{ user.first_name }} {{ user.last_name }}</h5>
+                {% endfor %}
+            </div>
+        </div>
+    </body>
+</html>
