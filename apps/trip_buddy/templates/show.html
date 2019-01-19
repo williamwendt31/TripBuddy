@@ -15,19 +15,21 @@
                 <a href="/logout" class="btn btn-danger">Logout</a>
             </div>
         </nav>
-        <div id="wrapper">
-            <h4><strong>{{ trip.dest }}</strong></h4>
-            <div id="details">
-                <h5>Planned By: {{ trip.planned_by.first_name }} {{ trip.planned_by.last_name }}</h5>
-                <h5>Description: {{ trip.desc }}</h5>
-                <h5>Travel Date From: {{ trip.start_date|date:"M d Y" }}</h5>
-                <h5>Travel Date To: {{ trip.end_date|date:"M d Y" }}</h5>
-            </div>
-            <h4><strong>Other Users Joining the Trip:</strong></h4>
-            <div id="joiners">
-                {% for user in trip.joined_users.all %}
-                <h5>{{ user.first_name }} {{ user.last_name }}</h5>
-                {% endfor %}
+        <div id="wrapper" class="container-fluid">
+            <div class="col-sm-12 col-md-6">
+                <h4><strong>{{ trip.dest }}</strong></h4>
+                <div id="details">
+                    <h5>Planned By: {{ trip.planned_by.first_name }} {{ trip.planned_by.last_name }}</h5>
+                    <h5>Description: {{ trip.desc }}</h5>
+                    <h5>Travel Date From: {{ trip.start_date|date:"M d Y" }}</h5>
+                    <h5>Travel Date To: {{ trip.end_date|date:"M d Y" }}</h5>
+                </div>
+                <h4><strong>Other Users Joining the Trip:</strong></h4>
+                <div id="joiners">
+                    {% for user in trip.joined_users.all %}
+                    <h5>{{ user.first_name }} {{ user.last_name }}</h5>
+                    {% endfor %}
+                </div>
             </div>
         </div>
     </body>

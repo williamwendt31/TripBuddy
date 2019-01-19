@@ -1,24 +1,23 @@
 #right {
     float: right;
 }
+
 #wrapper {
-    width: 80%;
-    margin: 0 auto;
-    margin-top: 40px;
+    padding: 2rem 1rem 1rem;
 }
+
 .red {
     color: red;
 }
+
 .down {
-    margin-bottom: 100px;
+    margin-top: 4rem;
 }
-#cent {
-    width: 90%;
-    margin: 0 auto;
-}
+
 a {
     margin: 0px 5px;
 }
+
 table {
     text-align: center;
 }
